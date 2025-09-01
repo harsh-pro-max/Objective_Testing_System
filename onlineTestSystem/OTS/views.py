@@ -2,11 +2,14 @@ from django.shortcuts import render
 from django.http import HttpResponse,HttpResponseRedirect
 # import all models in OTS 
 from OTS.models import *
+# import template files 
+from django.template import loader 
 
 # Create your views here.
 
 def welcome(request):
-    pass
+    template=loader.get_template('welcome.html')
+    return HttpResponse(request)
 
 def candidateRegistrationForm(request):
     pass
