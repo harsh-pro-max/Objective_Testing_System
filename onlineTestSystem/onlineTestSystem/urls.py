@@ -20,6 +20,6 @@ from django.contrib import admin
 from django.urls import path,include
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # connect OTS urls in onlineTestSystem
+    # connect OTS urls in onlineTestSystem urls 
     path('OTS/',include('OTS.urls')),
 ]

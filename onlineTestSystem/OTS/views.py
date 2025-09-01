@@ -9,7 +9,7 @@ from django.template import loader
 
 def welcome(request):
     template=loader.get_template('welcome.html')
-    return HttpResponse(request)
+    return HttpResponse(template.render())
 
 def candidateRegistrationForm(request):
     pass
@@ -26,7 +26,7 @@ def candidateHome(request):
 def testPaper(request):
     pass
 
-def claculateTestResult(request):
+def calculateTestResult(request):
     pass
 
 def testResultHistory(request):
