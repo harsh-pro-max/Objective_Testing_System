@@ -9,7 +9,7 @@ urlpatterns = [
 
     path('new-candidate',candidateRegistrationForm, name='registrationForm'),
 
-    path('store-candidate',cadidateRegistration),
+    path('store-candidate',cadidateRegistration,name='storeCandidate'),
 
     path('login',loginView,name='login'),
 
