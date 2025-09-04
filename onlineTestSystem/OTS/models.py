@@ -10,13 +10,13 @@ class Candidate(models.Model):
     
     name=models.CharField(null=False,max_length=30)
 
-    test_attempted=models.IntegerField()
+    test_attempted=models.IntegerField(default=0)
 
-    points=models.FloatField()
+    points=models.FloatField(default=0.0)
 
 # models created for Question handle
 class Question(models.Model):
-    q_id=models.BigAutoField(primary_key=True,auto_created=True)
+    qid=models.BigAutoField(primary_key=True,auto_created=True)
 
     que=models.TextField()
     a=models.CharField(max_length=255)

@@ -1,6 +1,6 @@
 {% extends 'main.html' %}
 
-{% block title %} OTS-Registration form {% endblock %}
+{% block title %} OTS-Registration form {% endblock title %}
 
 {% block top %}
 <a href="{% url 'OTS:login' %}">Login</a>
@@ -18,6 +18,8 @@
     <label for="password">Password</label>
     <input type="password" name="password">
     
+    <label for="name">Name</label>
+    <input type="text" name="name">
     
     <input type="submit" value="Submit">
     <input type="reset" value="clear">
