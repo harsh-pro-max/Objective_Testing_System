@@ -26,7 +26,7 @@ class Question(models.Model):
     ans=models.CharField(max_length=2)
 
 class Result(models.Model):
-    result_id=models.BigAutoField(primary_key=True,auto_created=True)
+    resultid=models.BigAutoField(primary_key=True,auto_created=True)
     username=models.ForeignKey(Candidate,on_delete=models.CASCADE)
     date=models.DateField(auto_now=True)
     time=models.TimeField(auto_now=True)

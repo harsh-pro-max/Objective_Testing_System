@@ -95,7 +95,7 @@ def calculateTestResult(request):
         except:
             pass
     points=(total_right-total_wrong)/len(qid_list)*10
-    # store result in Result Table
+    #store result in Result Table
     result=Result()
     result.username=Candidate.objects.get(username=request.session['username'])
     result.attempt=total_attempt
@@ -103,19 +103,32 @@ def calculateTestResult(request):
     result.wrong=total_wrong
     result.points=points
     result.save()
-
-    # update candidate table
+    #update candidate table
     candidate=Candidate.objects.get(username=request.session['username'])
+    candidate.test_attempted+=1
     candidate.points=(candidate.points*(candidate.test_attempted-1)+points)/candidate.test_attempted
     candidate.save()
     return HttpResponseRedirect('result')
 
-
 def testResultHistory(request):
-    pass
+    if 'name' not in request.session.keys():
+        res=HttpResponseRedirect('login')
+    
+    candidate=Candidate.objects.filter(username=request.session['username'])
+    results=Result.objects.filter(username_id=candidate[0].username)
+    context={'candidate':candidate[0],'results':results}
+    res=render(request,'candidate_history.html',context)
+    return res
 
 def showTestResult(request):
-    pass
+    if 'name' not in request.session.keys():
+        res=HttpResponseRedirect("login")
+    #fetch latest result from Result table
+    result=Result.objects.filter(resultid=Result.objects.latest('resultid').resultid,username_id=request.session['username'])
+
+    context={'result':result}
+    res=render(request,'show_result.html',context)
+    return res
 
 def logoutView(request):
     if 'name' in request.session.keys():
